@@ -1,0 +1,127 @@
+/*.home-page {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	background: #BBF3CF;
+	background: -moz-radial-gradient(center, ellipse cover,  #BBF3CF 0%, #1ED760 100%);
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#BBF3CF), color-stop(100%,#1ED760));
+	background: -webkit-radial-gradient(center, ellipse cover,  #BBF3CF 0%,#1ED760 100%);
+	background: -o-radial-gradient(center, ellipse cover,  #BBF3CF 0%,#1ED760 100%);
+	background: -ms-radial-gradient(center, ellipse cover,  #BBF3CF 0%,#1ED760 100%);
+	background: radial-gradient(ellipse at center,  #BBF3CF 0%,#1ED760 100%);	
+}*/
+
+#gradient {
+	display: inline-block;
+	width: 100%;
+  	height: 100%;
+  	padding: 0px;
+  	margin: 0px;
+}
+
+/*.home-page {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	background: url(http://www.duoh.com/varia/seamless-patterns/pattern-experiment.jpg)repeat;	
+}*/
+
+.home-page
+
+
+#home-title {
+	text-align: center;
+	font-size: 2.2em;
+}
+
+#spotify-link {
+	margin: 0 auto;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 250px;
+    margin-left: -125px;
+    height: 250px;
+    margin-right: -125px;
+}
+#spotify-link-text {
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+
+.circle {
+	background-color: black;
+	font-color: white;
+	/*#BBF3CF*/
+	width: 100px;
+	height: 100px;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+}
+#circle-one {
+
+}
+#circle-two {
+
+}
+#circle-three {
+
+}
+#circle-four {
+
+}
+
+
+.jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+}
+.btn-success:active, .btn-success:focus, .btn-success:hover {
+    color: #fff;
+    background-color: #47a447;
+    border-color: #398439;
+}
+.btn:focus, .btn:hover {
+    color: #333;
+    text-decoration: none;
+}
+.btn-lg {
+    line-height: 1.33;
+    border-radius: 6px;
+}
+.btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-size: 22px;
+    padding-top: 14px;
+    padding-right: 24px;
+    padding-bottom: 14px;
+    padding-left: 24px;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+}
+button {
+    font-family: inherit;
+}
+button {
+    margin: 0;
+    text-transform: none;
+    -webkit-appearance: button;
+}
+
+
+
+

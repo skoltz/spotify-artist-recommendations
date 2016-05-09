@@ -28,19 +28,22 @@ class UsersController < ApplicationController
 	end
 
   	def related
-  		
-  		@user_artist_related = Hash.new{|h,k| h[k] = [] }
-  		@artists.keys.each do |art|
-			rel_art_info = JSON.load(open("https://api.spotify.com/v1/artists/#{art}/related-artists"))
+  		@user_artist_related = Hash.new{|h,k| h[k] = [] }   # users artists to arr of 20 recommended {"Tame Impala"=>["Grizzly Bear",Kurt Vile"]} 
+  		@rel_artist_rec = Hash.new{|h,k| h[k] = [] }     # recommended artists to arr of user's artist they were recommended from 
+      # iterating through user's artist ids, api for related artists
+      @artists.keys.each do |art|
+			  rel_art_info = JSON.load(open("https://api.spotify.com/v1/artists/#{art}/related-artists"))
   			rel_art_info["artists"].each do |rel|
   				@user_artist_related[@artists[art]] << rel["name"]
-  				if !@artists.keys.include?(rel["id"])
+          # if not an artist in user's saved track list  				
+          if !@artists.keys.include?(rel["id"])     
+            @rel_artist_rec[rel["name"]] << @artists[art]     # adding user's artist to hash of recommended
   					@rel_art_count[rel["name"]] += 1
   				end
   			end
   		end
       # output for view, the 30 most frequent counted similar artists
-      @output = @rel_art_count.sort_by{|k,v|v}.reverse[0..30].to_h
+      @output = @rel_art_count.sort_by { |k,v| v }.reverse[0..30].to_h
   	end
 
 end
