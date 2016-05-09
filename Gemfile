@@ -32,6 +32,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'pg'
+# pg for heroku deployment
+
 gem 'rspotify'
 
 # gem 'rspotify', github: 'morgz/rspotify'
