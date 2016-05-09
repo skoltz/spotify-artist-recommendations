@@ -1,0 +1,15 @@
+<h3> Top 30 most similar artists not currently in your library </h3>
+
+<% @output.each do |k,v| %> 
+	<h2>  <%= "#{k} is related to #{v} of your artists" %>  </h2>
+	<br>
+	<%end%>
+
+<br>
+<br>
+<br>
+<br>
+
+<% @user_artist_related.each do |ar, sim| %>
+<h5> <%= "#{ar} => #{sim}" %> </h5>
+<%end%>
