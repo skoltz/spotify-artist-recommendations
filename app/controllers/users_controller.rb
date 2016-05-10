@@ -51,7 +51,7 @@ class UsersController < ApplicationController
     	@spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
       # api limited, must use counters to offset and repeat call
   		i = 0 
-  		k = 50 
+  		k = 20 
   		until @spotify_user.saved_tracks(limit:k,offset:i) == [] do 
   			@spotify_user.saved_tracks(limit:k,offset:i).each do |art|
 				name = art.artists[0].name
@@ -60,7 +60,7 @@ class UsersController < ApplicationController
 					@artists[art.artists[0].id] = name
 				end
 			end
-			i += 50
+			i += 20
 		end
 		related
 	end
