@@ -1,28 +1,19 @@
-== README
+== Spotify Artist Recommendations
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Spotify recommendation site. 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Available at: http://spotify-artist-recommendations.herokuapp.com/
 
 
-Please feel free to use a different markup language if you do not plan to run
+## Description
+
+This application analyzes a user's saved tracks and the recommended artists from each and shows the most frequently recommended artists that don't exist in the user's library.
+
+## Screenshots
+
+## Usage
+
+Log in to begin!
+
+
 <tt>rake doc:app</tt>.
