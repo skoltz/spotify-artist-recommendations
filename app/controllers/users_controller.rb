@@ -47,7 +47,7 @@ class UsersController < ApplicationController
   			end
   		end
       # output for view, the 30 most frequent counted similar artists
-      @output = @rel_art_count.sort_by { |k,v| v }.reverse[0..29].to_h
+      @output = @rel_art_count.sort_by { |k,v| v }.reverse[0..14].to_h
       # top_artists(@spotify_user)
   	end
 

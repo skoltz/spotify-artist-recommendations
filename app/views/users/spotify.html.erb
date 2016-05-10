@@ -5,13 +5,36 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> 
 </head>
 <body>
-	<div id="listContainer">
-	  <ul id="expList">
+	<div id="list-container">
+	  <ul id="exp-list">
 	  	<h2 style="display:inline-block"> Artists most related to those in your library </h2>
 	    <% @output.each do |rel, num|  %>
 	    	<% rel_uri = @artists_all_info[rel][1]  %>
 	    
-	    <li> <h2 style="display:inline-block"> <%= "#{num}: #{rel}   "%></h2> <h3 id="listen-to"> Listen </h3><iframe id="listen-to-frame" src="https://embed.spotify.com/?uri=<%="#{rel_uri}"%>" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+	    <li> <h2 style="display:inline-block"> <%= "#{rel}, #{num}  "%> </h2> 
+	    
+	    <% r = rel.gsub(" ","")  %> 
+	    <h3 id="<%="#{r}"%>" class="listen-to" style="display:inline-block"> Listen </h3>
+
+<script type="text/javascript">
+
+	    	    $( "#<%="#{r}"%>" ).click(function() {
+  				$( "#f-<%="#{r}"%>" ).toggle( "slow", function() {
+
+  				});
+			});
+			
+			$( "#a<%="#{r}"%>" ).click(function() {
+  				$( "#f<%="#{r}"%>" ).toggle( "slow", function() {
+
+  				});
+			});
+</script>
+
+	    <div style="display:none;" style="display:inline-block;" id="f-<%="#{r}"%>">
+	    	<iframe src="https://embed.spotify.com/?uri=<%="#{rel_uri}"%>" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+	    </div>
+
 
 	      <ul>
 	      <h3> Related to these artists in your library: </h3>
@@ -27,15 +50,6 @@
 	          </ul>
 	        </li>
 	        <% end %> 
-
-	        <li>Item A.2</li>
-	        <li>Item A.3
-	          <ul>
-	            <li>
-	              <span>Lorem ipsum</span>
-	            </li>
-	          </ul>
-	        </li>
 	      </ul>
 	    </li>
 	    <%end%>
@@ -59,24 +73,27 @@
   		margin: 0;
 	}
 
-	#listContainer{
+	#list-container{
 	  margin-top:15px;
 	}
 	 
-	#expList ul, li {
+	#exp-list ul, li {
 	    list-style: none;
 	    margin:0;
 	    padding:0;
 	    cursor: pointer;
 	}
-	#expList p {
+	#exp-list ul {
+		padding-left: 6%;
+	}
+	#exp-list p {
 	    margin:0;
 	    display:block;
 	}
-	#expList p:hover {
+	#exp-list p:hover {
 	    background-color:#121212;
 	}
-	#expList li {
+	#exp-list li {
 	    line-height:160%;
 	    text-indent:0px;
 	    background-position: 1px 8px;
@@ -85,12 +102,12 @@
 	}
 	 
 	/* Collapsed state for list element */
-	#expList .collapsed {
+	#exp-list .collapsed {
 	    background-image: url('/assets/collapsed.png');
 	}
 	/* Expanded state for list element
 	/* NOTE: This class must be located UNDER the collapsed one */
-	#expList .expanded {
+	#exp-list .expanded {
 	    background-image: url('/assets/expanded.png');
 	}
 
@@ -105,7 +122,7 @@
 		border-radius: 50px;
 	}
 
-	#listen-to {
+	.listen-to {
 		display: inline-block;
 		padding: 7px;
 		-moz-border-radius: 100px / 50px;
@@ -113,12 +130,9 @@
 		border-radius: 100px / 50px;
 	}
 
-	#listen-to:hover { 
+	.listen-to:hover { 
     background-color: #1ED760;
     color: white;
-	}
-	#listen-to-frame {
-		display:none;
 	}
 
 </style>
@@ -127,7 +141,7 @@
 <script type="text/javascript">
 
 	$(function prepareList() {
-		$('#expList').find('li:has(ul)').unbind('click').click(function(event) {
+		$('#exp-list').find('li:has(ul)').unbind('click').click(function(event) {
 			if(this == event.target) {
 				$(this).toggleClass('expanded');
 				$(this).children('ul').toggle('medium');
@@ -136,24 +150,19 @@
 		}).addClass('collapsed').removeClass('expanded').children('ul').hide();
 	 
 		//Hack to add links inside the cv
-		$('#expList a').unbind('click').click(function() {
+		$('#exp-list a').unbind('click').click(function() {
 			window.open($(this).attr('href'));
 			return false;
 		});
 		//Create the button functionality
-		$('#expandList').unbind('click').click(function() {
+		$('#expand-list').unbind('click').click(function() {
 			$('.collapsed').addClass('expanded');
 			$('.collapsed').children().show('medium');
 		})
-		$('#collapseList').unbind('click').click(function() {
+		$('#collapse-list').unbind('click').click(function() {
 			$('.collapsed').removeClass('expanded');
 			$('.collapsed').children().hide('medium');
 		})
 	});
-
-    $("#listen-to").click(function(){
-        $("#listen-to-frame").toggle();
-    });
-
 
 </script>
