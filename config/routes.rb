@@ -10,7 +10,14 @@ Rails.application.routes.draw do
 
   get '/auth/spotify/callback', to: 'users#spotify'
 
+  # get '/related' => 'users#show'
 
+  get '/logout', to: 'users#logout', as: 'logout_users'
+
+
+
+  # resources :users, only: ['show', 'destroy']
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

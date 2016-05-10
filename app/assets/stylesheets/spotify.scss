@@ -1,0 +1,77 @@
+
+	html, body {
+		font-family: "Proxima Nova","Helvetica Neue",Helvetica,Arial,sans-serif;
+  		padding: 0;
+  		margin: 0;
+	}
+
+	#list-container{
+	  margin-top:15px;
+	}
+	 
+	#exp-list ul, li {
+	    list-style: none;
+	    margin:0;
+	    padding:0;
+	    cursor: pointer;
+	}
+	#exp-list ul {
+		padding-left: 6%;
+	}
+	#exp-list p {
+	    margin:0;
+	    display:block;
+	}
+	#exp-list p:hover {
+	    background-color:#121212;
+	}
+	#exp-list li {
+	    line-height:160%;
+	    text-indent:0px;
+	    background-position: 1px 8px;
+	    padding-left: 20px;
+	    background-repeat: no-repeat;
+	}
+	 
+	/* collapsed state for list element */
+/*	#exp-list .collapsed {
+	    background-image: url('/assets/collapsed.png');
+	}
+	#exp-list .expanded {
+	    background-image: url('/assets/expanded.png');
+	}*/
+
+	#exp-list .collapsed {
+	    background-image: url('http://www.i2symbol.com/images/symbols/subscript/subscript_plus_sign_u208A_icon_256x256.png');
+	    background-size: 20px;
+	}
+	#exp-list .expanded {
+	    background-image: url('http://www.i2symbol.com/images/symbols/math/minus_sign_u2212_icon_256x256.png');
+	    background-size: 15px;
+	}
+
+
+	.circles {
+		background-color: black;
+		font-color: white;
+		/*#BBF3CF*/
+		width: 100px;
+		height: 100px;
+		-moz-border-radius: 50px;
+		-webkit-border-radius: 50px;
+		border-radius: 50px;
+	}
+
+	.listen-to {
+		display: inline-block;
+		padding: 7px;
+		-moz-border-radius: 100px / 50px;
+		-webkit-border-radius: 100px / 50px;
+		border-radius: 100px / 50px;
+	}
+
+	.listen-to:hover { 
+    background-color: #1ED760;
+    color: white;
+	}
+

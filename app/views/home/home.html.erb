@@ -3,10 +3,13 @@
 		<h1 id="title"> Spotify Artist Recommendations </h1>
 	</div>
 </div>
-<div id="spotify-link">
-	<a href='/auth/spotify'> <button class="btn btn-lg btn-success" id="login">Log in with Spotify</button></a>
 
-</div>
+<div class="login-out"> <%= render partial: "login_out", locals: {current: @current_user} %></div>
+
+
+<% if current_user.nil?  %> 
+<h1> something </h1>
+<%end%>
 
 <p class="footer" id="footer-about"> About </p>
 <p class="footer" id="footer-text"> Analyzes a user's saved tracks and shows connections between recommended artists. <br>Created by <a href="https://github.com/skoltz">Steve Koltz</a></p>

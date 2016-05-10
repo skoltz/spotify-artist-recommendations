@@ -62,6 +62,17 @@
 	display: table-cell;
 	vertical-align: middle;
 }
+#logout {
+	position: fixed;
+    display: inline-block;
+    text-align: center;
+    right: 0;
+    margin-right: 10px;
+    top: 10px;
+    color: white;
+    text-decoration: none;
+    background-color: rgba(0,0,0,0.12);
+}
 
 
 .circle {

@@ -1,11 +1,10 @@
-require 'open-uri'
-
 class HomeController < ApplicationController
+	include SpotifyHelper
 
 	def index
 	end
 
-	def search_artist 
+	def home
 
 	end
 
