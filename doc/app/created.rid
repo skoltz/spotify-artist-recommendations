@@ -1,0 +1,6 @@
+Tue, 10 May 2016 02:38:39 -0400
+README.rdoc	Tue, 10 May 2016 02:36:42 -0400
+app/controllers/application_controller.rb	Sun, 08 May 2016 08:35:24 -0400
+app/controllers/home_controller.rb	Sun, 08 May 2016 22:12:10 -0400
+app/controllers/users_controller.rb	Tue, 10 May 2016 02:22:44 -0400
+app/helpers/application_helper.rb	Sun, 08 May 2016 08:35:24 -0400
