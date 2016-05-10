@@ -7,7 +7,7 @@
 <body>
 	<div id="list-container">
 	  <ul id="exp-list">
-	  	<h2 style="display:inline-block"> Artists most related to those in your library </h2>
+	  	<h2 style="display:inline-block"> Artists most related to those in your library: </h2>
 	    <% @output.each do |rel, num|  %>
 	    	<% rel_uri = @artists_all_info[rel][1]  %>
 	    
@@ -16,20 +16,16 @@
 	    <% r = rel.gsub(" ","")  %> 
 	    <h3 id="<%="#{r}"%>" class="listen-to" style="display:inline-block"> Listen </h3>
 
-<script type="text/javascript">
-
-	    	    $( "#<%="#{r}"%>" ).click(function() {
+		<script type="text/javascript">
+			$( "#<%="#{r}"%>" ).click(function() {
   				$( "#f-<%="#{r}"%>" ).toggle( "slow", function() {
-
   				});
 			});
-			
 			$( "#a<%="#{r}"%>" ).click(function() {
   				$( "#f<%="#{r}"%>" ).toggle( "slow", function() {
-
   				});
 			});
-</script>
+		</script>
 
 	    <div style="display:none;" style="display:inline-block;" id="f-<%="#{r}"%>">
 	    	<iframe src="https://embed.spotify.com/?uri=<%="#{rel_uri}"%>" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
@@ -41,7 +37,7 @@
 	      	<% @rel_artist_rec[rel].each do |user_a|  %>
 	        <li> <%= user_a %>
 	          <ul>
-	          <h3> All artists related to <%= user_a %> </h3>
+	          <h3> All artists related to <%=user_a%>: </h3>
 	          <% @user_artist_related[user_a].each do |rec_a|  %>
 	            <li>  <%= rec_a  %> 
 
