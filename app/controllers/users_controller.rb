@@ -7,13 +7,51 @@ class UsersController < ApplicationController
     end
 
 
+    def top_artists(spot_user)
+      @top_artists_hash = {}
+      spot_user.top_artists[0..19].each do |fav|
+        @top_artists_hash[fav.name] = {}
+
+        @user_artist_related[fav.name].each do |fav_rel_art|
+          @top_artists_hash[fav.name][fav_rel_art] = {}
+          
+          @rel_artist_rec[fav_rel_art].each do |user_also_rec|
+            if fav.name != user_also_rec
+              @top_artists_hash[fav.name][fav_rel_art][user_also_rec] = "1"
+            end
+          end
+          if @top_artists_hash[fav.name][fav_rel_art] == {}
+            @top_artists_hash[fav.name][fav_rel_art]["none"] = "0"            
+          end
+        end
+      end
+      @top = @top_artists_hash.to_json
+
+    end
+
+    #   @user_top_artists =  { 
+    #     sufjan =  {
+    #        rec1 =  [
+    #           otheruserartist1,
+    #           otheruserartist2
+    #         ],
+    #         rec2 = [
+    #           otheruserartist3,
+    #           otheruserartist4
+    #         ]
+
+    #        }
+    #     }
+    #   }
+    # end
+
+
     def spotify
       # receive user's info from spotify
     	@spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
-
       # api limited, must use counters to offset and repeat call
   		i = 0 
-  		k = 20 
+  		k = 50 
   		until @spotify_user.saved_tracks(limit:k,offset:i) == [] do 
   			@spotify_user.saved_tracks(limit:k,offset:i).each do |art|
 				name = art.artists[0].name
@@ -22,7 +60,7 @@ class UsersController < ApplicationController
 					@artists[art.artists[0].id] = name
 				end
 			end
-			i += 20
+			i += 50
 		end
 		related
 	end
@@ -34,9 +72,9 @@ class UsersController < ApplicationController
       @artists.keys.each do |art|
 			  rel_art_info = JSON.load(open("https://api.spotify.com/v1/artists/#{art}/related-artists"))
   			rel_art_info["artists"].each do |rel|
-  				@user_artist_related[@artists[art]] << rel["name"]
           # if not an artist in user's saved track list  				
           if !@artists.keys.include?(rel["id"])     
+            @user_artist_related[@artists[art]] << rel["name"]
             @rel_artist_rec[rel["name"]] << @artists[art]     # adding user's artist to hash of recommended
   					@rel_art_count[rel["name"]] += 1
   				end
@@ -44,6 +82,7 @@ class UsersController < ApplicationController
   		end
       # output for view, the 30 most frequent counted similar artists
       @output = @rel_art_count.sort_by { |k,v| v }.reverse[0..30].to_h
+      top_artists(@spotify_user)
   	end
 
 end

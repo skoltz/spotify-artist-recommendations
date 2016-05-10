@@ -1,3 +1,5 @@
+<div id="spotify-user-page">
+
 <h3> Top 30 most similar artists not currently in your library </h3>
 
 <% @output.each do |k,v| %> 
@@ -7,9 +9,23 @@
 
 <br>
 <br>
+
+<h2> The first of your favorite artists, pointing to recommended artists for whom you don't have saved tracks, which each points to other of your artists that have also recommended that artist (value 1 can be ignored) </h2>
+<% top = @top_artists_hash.first.to_json %>
+<pre><%= JSON.pretty_generate(@top_artists_hash.first) %></pre>
+
+<br> 
+<br> 
+
+<h1> all your artists and their recommended artists: </h1>
+<br>
+<br>
 <br>
 <br>
 
 <% @user_artist_related.each do |ar, sim| %>
 <h5> <%= "#{ar} => #{sim}" %> </h5>
 <%end%>
+
+
+</div>
