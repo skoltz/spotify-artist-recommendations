@@ -14,6 +14,3 @@ This application analyzes a user's saved tracks and the recommended artists from
 ## Usage
 
 Log in to begin!
-
-
-<tt>rake doc:app</tt>.
