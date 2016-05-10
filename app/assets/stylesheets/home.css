@@ -28,16 +28,22 @@
   	margin: 0px;
 }
 
+.home-page {
+	text-align: center;
+}
 #title {
+	text-align: center;
 	color: white;
 }
 
 #home-title {
+	height: 100%;
 	text-align: center;
 	font-size: 2.2em;
 }
 
 #spotify-link {
+	text-align: center;
 	margin: 0 auto;
 	position: absolute;
 	left: 50%;
@@ -125,6 +131,16 @@ button {
     -webkit-appearance: button;
 }
 
-
-
+.footer {
+	text-align: center;
+	font-size: 120%;
+	font-weight: 400;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+#footer-text {
+	display:none;
+}
 
