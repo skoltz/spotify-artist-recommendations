@@ -1,31 +1,159 @@
-<div id="spotify-user-page">
+<!DOCTYPE html>
+<html>
+<head>
+<title> Spotify Artist Recommendations </title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> 
+</head>
+<body>
+	<div id="listContainer">
+	  <ul id="expList">
+	  	<h2 style="display:inline-block"> Artists most related to those in your library </h2>
+	    <% @output.each do |rel, num|  %>
+	    	<% rel_uri = @artists_all_info[rel][1]  %>
+	    
+	    <li> <h2 style="display:inline-block"> <%= "#{num}: #{rel}   "%></h2> <h3 id="listen-to"> Listen </h3><iframe id="listen-to-frame" src="https://embed.spotify.com/?uri=<%="#{rel_uri}"%>" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
 
-<h3> Top 30 most similar artists not currently in your library </h3>
+	      <ul>
+	      <h3> Related to these artists in your library: </h3>
+	      	<% @rel_artist_rec[rel].each do |user_a|  %>
+	        <li> <%= user_a %>
+	          <ul>
+	          <h3> All artists related to <%= user_a %> </h3>
+	          <% @user_artist_related[user_a].each do |rec_a|  %>
+	            <li>  <%= rec_a  %> 
 
-<% @output.each do |k,v| %> 
-	<h2>  <%= "#{k} is related to #{v} of your artists" %>  </h2>
-	<br>
-	<%end%>
+	            </li>
+	          <% end  %>
+	          </ul>
+	        </li>
+	        <% end %> 
 
-<br>
-<br>
-
-<h2> The first of your favorite artists, pointing to recommended artists for whom you don't have saved tracks, which each points to other of your artists that have also recommended that artist (value 1 can be ignored) </h2>
-
-<h3> json removed for heroku deploy </h3>
-
-<br> 
-<br> 
-
-<h1> all your artists and their recommended artists: </h1>
-<br>
-<br>
-<br>
-<br>
-
-<% @user_artist_related.each do |ar, sim| %>
-<h5> <%= "#{ar} => #{sim}" %> </h5>
-<%end%>
+	        <li>Item A.2</li>
+	        <li>Item A.3
+	          <ul>
+	            <li>
+	              <span>Lorem ipsum</span>
+	            </li>
+	          </ul>
+	        </li>
+	      </ul>
+	    </li>
+	    <%end%>
+	  </ul>
+	</div>
 
 
-</div>
+</body>
+</html>
+
+
+
+
+
+
+
+<style>
+	html, body {
+		font-family: "Proxima Nova","Helvetica Neue",Helvetica,Arial,sans-serif;
+  		padding: 0;
+  		margin: 0;
+	}
+
+	#listContainer{
+	  margin-top:15px;
+	}
+	 
+	#expList ul, li {
+	    list-style: none;
+	    margin:0;
+	    padding:0;
+	    cursor: pointer;
+	}
+	#expList p {
+	    margin:0;
+	    display:block;
+	}
+	#expList p:hover {
+	    background-color:#121212;
+	}
+	#expList li {
+	    line-height:160%;
+	    text-indent:0px;
+	    background-position: 1px 8px;
+	    padding-left: 20px;
+	    background-repeat: no-repeat;
+	}
+	 
+	/* Collapsed state for list element */
+	#expList .collapsed {
+	    background-image: url('/assets/collapsed.png');
+	}
+	/* Expanded state for list element
+	/* NOTE: This class must be located UNDER the collapsed one */
+	#expList .expanded {
+	    background-image: url('/assets/expanded.png');
+	}
+
+	.circles {
+		background-color: black;
+		font-color: white;
+		/*#BBF3CF*/
+		width: 100px;
+		height: 100px;
+		-moz-border-radius: 50px;
+		-webkit-border-radius: 50px;
+		border-radius: 50px;
+	}
+
+	#listen-to {
+		display: inline-block;
+		padding: 7px;
+		-moz-border-radius: 100px / 50px;
+		-webkit-border-radius: 100px / 50px;
+		border-radius: 100px / 50px;
+	}
+
+	#listen-to:hover { 
+    background-color: #1ED760;
+    color: white;
+	}
+	#listen-to-frame {
+		display:none;
+	}
+
+</style>
+
+
+<script type="text/javascript">
+
+	$(function prepareList() {
+		$('#expList').find('li:has(ul)').unbind('click').click(function(event) {
+			if(this == event.target) {
+				$(this).toggleClass('expanded');
+				$(this).children('ul').toggle('medium');
+			}
+			return false;
+		}).addClass('collapsed').removeClass('expanded').children('ul').hide();
+	 
+		//Hack to add links inside the cv
+		$('#expList a').unbind('click').click(function() {
+			window.open($(this).attr('href'));
+			return false;
+		});
+		//Create the button functionality
+		$('#expandList').unbind('click').click(function() {
+			$('.collapsed').addClass('expanded');
+			$('.collapsed').children().show('medium');
+		})
+		$('#collapseList').unbind('click').click(function() {
+			$('.collapsed').removeClass('expanded');
+			$('.collapsed').children().hide('medium');
+		})
+	});
+
+    $("#listen-to").click(function(){
+        $("#listen-to-frame").toggle();
+    });
+
+
+</script>

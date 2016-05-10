@@ -7,7 +7,7 @@ Available at: http://spotify-artist-recommendations.herokuapp.com/
 
 ## Description
 
-This application analyzes a user's saved tracks and the recommended artists from each and shows the most frequently recommended artists that don't exist in the user's library.
+This application analyzes a user's saved tracks and the related artists from each and shows the most frequently related artists that don't exist in the user's library.
 
 ## Screenshots
 
