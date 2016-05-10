@@ -6,7 +6,7 @@ class UsersController < ApplicationController
       @rel_art_count = Hash.new(0)
     end
 
-
+    # get user's top artists, generates a hash for highcharts
     def top_artists(spot_user)
       @top_artists_hash = {}
       spot_user.top_artists[0..19].each do |fav|
@@ -28,22 +28,19 @@ class UsersController < ApplicationController
       @top = @top_artists_hash.to_json
 
     end
-
-    #   @user_top_artists =  { 
-    #     sufjan =  {
-    #        rec1 =  [
-    #           otheruserartist1,
-    #           otheruserartist2
-    #         ],
-    #         rec2 = [
-    #           otheruserartist3,
-    #           otheruserartist4
-    #         ]
-
-    #        }
+    # json opbject for highcharts
+    #   @top_artists_hash =  { 
+    #     "sufjan" =  {
+    #        rec1 =  {
+    #           "otherUserArtist1" = 1,
+    #           otherUserArtist2 = 1
+    #         },
+    #         rec2 = {
+    #           otherUserArtist3 = 1,
+    #           otherUserArtist4 = 1
+    #         }
     #     }
     #   }
-    # end
 
 
     def spotify
