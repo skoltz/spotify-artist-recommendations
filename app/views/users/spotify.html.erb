@@ -11,7 +11,15 @@
 	    <% @output.each do |rel, num|  %>
 	    	<% rel_uri = @artists_all_info[rel][1]  %>
 	    
-	    <li> <h2 style="display:inline-block"> <%= "#{num}: #{rel}   "%></h2> <h3 id="listen-to"> Listen </h3><iframe id="listen-to-frame" src="https://embed.spotify.com/?uri=<%="#{rel_uri}"%>" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+	    <li> <h2 style="display:inline-block"> <%= "#{num}: #{rel}   "%></h2> 
+
+	    <input type="checkbox" id="link-<%="#{rel}"%>">
+
+	    <h3><label for="link-<%="#{rel}"%>">Listen</label></h3>
+
+	     id="listen-to"> Listen </h3>
+
+	    <iframe id="listen-to-frame" src="https://embed.spotify.com/?uri=<%="#{rel_uri}"%>" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
 
 	      <ul>
 	      <h3> Related to these artists in your library: </h3>
