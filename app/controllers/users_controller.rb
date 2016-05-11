@@ -1,13 +1,18 @@
 class UsersController < ApplicationController
+    include RelatedHelper
 
     def spotify
       # spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
       session[:spotify] = request.env['omniauth.auth']
-      redirect_to root_path
+      users_artists
+      related_art
+
+
+      <%= render partial: "related_artists" %>
+   
     end
 
     def logout
-      binding.pry
       session.delete(:spotify)
       redirect_to root_path
     end

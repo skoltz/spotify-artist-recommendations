@@ -6,10 +6,8 @@
 
 <div class="login-out"> <%= render partial: "login_out", locals: {current: @current_user} %></div>
 
+<div class="related-body"> <%= render partial: "related_artists" %></div>
 
-<% if current_user.nil?  %> 
-<h1> something </h1>
-<%end%>
 
 <p class="footer" id="footer-about"> About </p>
 <p class="footer" id="footer-text"> Analyzes a user's saved tracks and shows connections between recommended artists. <br>Created by <a href="https://github.com/skoltz">Steve Koltz</a></p>
