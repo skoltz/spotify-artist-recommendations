@@ -39,7 +39,7 @@ module RelatedHelper
         end
       end
       # output for view, most frequent counted similar artists
-      @output = @rel_art_count.sort_by { |k,v| v }.reverse[0..29]
+      @output = @rel_art_count.sort_by { |k,v| v }.reverse[0..29].to_h
     end
 
     def builder(related, id_art)

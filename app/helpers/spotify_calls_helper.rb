@@ -13,7 +13,7 @@ module SpotifyCallsHelper
 	end
 
 	def favor 
-		user.top_artists[0..19]
+		@user.top_artists[0..19]
 	end
 
 	def play_lists

@@ -1,0 +1,46 @@
+<% binding.pry %>
+<% if current_user %>	
+	<div id="list-container">
+	  <ul id="exp-list">
+	  	<h2 style="display:inline-block"> Artists most related to those in your library: </h2>
+	    <% @output.each do |rel, num|  %>
+	    	<% rel_uri = @artists_all_info[rel][1]  %>
+	    <li> <h2 style="display:inline-block"> <%= "#{rel}, #{num}  "%> </h2> 
+	    
+	    <% r = rel.gsub(" ","")  %> 
+	    <h3 id="<%="#{r}"%>" class="listen-to" style="display:inline-block"> Listen </h3>
+
+		<script type="text/javascript">
+			$( "#<%="#{r}"%>" ).click(function() {
+  				$( "#f-<%="#{r}"%>" ).toggle( "slow", function() {
+  				});
+			});
+			$( "#a<%="#{r}"%>" ).click(function() {
+  				$( "#f<%="#{r}"%>" ).toggle( "slow", function() {
+  				});
+			});
+		</script>
+
+	    <div style="display:none;" style="display:inline-block;" id="f-<%="#{r}"%>">
+	    	<!--  -->
+	    </div>
+	      <ul>
+	      <h3> Related to these artists in your library: </h3>
+	      	<% @rel_artist_rec[rel].each do |user_a|  %>
+	        <li> <%= user_a %>
+	          <ul>
+	          <h3> All artists related to <%=user_a%>: </h3>
+	          <% @user_artist_related[user_a].each do |rec_a|  %>
+	            <li>  <%= rec_a  %> 
+
+	            </li>
+	          <% end  %>
+	          </ul>
+	        </li>
+	        <% end %> 
+	      </ul>
+	    </li>
+	    <%end%>
+	  </ul>
+	</div>
+<% end %>	

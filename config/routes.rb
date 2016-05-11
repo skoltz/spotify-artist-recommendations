@@ -1,20 +1,17 @@
 Rails.application.routes.draw do
 
-  # get 'search/show'
-  # post 'search/show'
+  root to: 'spotify#home'
 
-  # get 'search/search_artist'
-  # post 'search/search_artist'
-
-  root to: 'home#home'
-
-  get '/auth/spotify/callback', to: 'users#spotify'
+  get '/auth/spotify/callback', to: 'spotify#show'
 
   # get '/related' => 'users#show'
 
-  get '/logout', to: 'users#logout', as: 'logout_users'
+  get '/logout', to: 'spotify#logout', as: 'logout_users'
 
+  get 'spotify/compare', to: 'spotify#compare'
 
+  # get 'search/search_artist'
+  # post 'search/search_artist'
 
   # resources :users, only: ['show', 'destroy']
   
